@@ -9,4 +9,5 @@ Long term goals include:
     2. Methods to index data
 
 | Data Structure | Completion Status |
+|----------------|-------------------|
 | Doubly Linked List | Work in progress |
