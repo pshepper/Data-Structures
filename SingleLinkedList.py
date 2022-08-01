@@ -67,4 +67,20 @@ class SingleLinkedList(object):
     
 if __name__ == "__main__":
     list = SingleLinkedList()
+
+    list.insertHead(1)
+    list.insertHead(2)
+    list.insertHead(3)
+
+    print(list.contains(3))
+
+    list.print()
+
+    list.deleteHead()
+
+    list.print()
+
+    list.deleteHead()
+
+    list.print()
             
