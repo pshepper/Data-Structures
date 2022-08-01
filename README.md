@@ -9,7 +9,7 @@ Long term goals include:
     2. Methods to index data
 
 | Data Structure | Description | Completion Status |
-|----------------|-------------------|
+|----------------|-------------------| ------------|
 | Doubly Linked List | Linear structure where nodes are linked with the node after and before |Work in progress |
 | Single Linked List | Linear structure where nodes are linked only with the node after | Work in progress | 
 | Undirected Graph | Non-linear structure where nodes have any number of adjacent nodes. Edges go both ways | Not started |
