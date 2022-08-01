@@ -53,16 +53,40 @@ class DoublyLinkedList(object):
         
     
     def deleteTail(self, index):
-        temp = self.tail
+        if self.tail == None:
+            return -1
+        elif self.tail == self.head:
+            self.destroyList()
+        else:
+            temp = self.tail.previous
+            temp.next = None
+            self.tail.previous = None
+            self.tail = temp
 
     def deleteIndex(self, index):
         temp = self.head
 
     def contains(self, data):
         temp = self.head
+        while temp.next != None:
+            if temp.data == data:
+                return True
+            temp = temp.next
+        return False
+
 
     def length(self):
+        if self.tail == None and self.head == None:
+            return 0
+
         temp = self.head
+        length = 1
+        
+        while temp.next != None:
+            length += 1
+            temp = temp.next
+        return length
+
 
     def print(self):
         if self.head == None and self.tail == None:
