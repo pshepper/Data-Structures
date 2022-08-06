@@ -20,6 +20,18 @@ class SingleLinkedList(object):
 
     def insertIndex(self, data, index):
         newNode = Node(data)
+        temp = self.head
+        previousNode = None
+
+        if index == 0:
+            self.insertHead(data)
+        else: 
+            while index != 0:
+                previousNode = temp
+                temp = temp.next
+                index -= 1
+            previousNode.next = newNode
+            newNode.next = temp
     
     def deleteHead(self):
         if self.head == None:
@@ -34,6 +46,30 @@ class SingleLinkedList(object):
 
     def deleteIndex(self, index):
         temp = self.head
+        previousNode = None
+
+        if index == 0:
+            self.deleteHead()
+        else:
+            while index != 0:
+                previousNode = temp
+                temp = temp.next
+                index -= 1
+            previousNode.next = temp.next
+            temp.next = None
+
+    def index(self, data):
+        '''Returns first index of data that is within list'''
+        temp = self.head
+        index = 0
+        if self.head.data == data:
+            return index
+        while temp.next != None:
+            temp = temp.next
+            index += 1
+            if temp.data == data:
+                return index
+        return None
 
     def contains(self, data):
         temp = self.head
@@ -46,14 +82,14 @@ class SingleLinkedList(object):
     def length(self):
         if self.head == None:
             return 0
+        else:
+            temp = self.head
+            length = 1
 
-        temp = self.head
-        length = 1
-
-        while temp.next != None:
-            length += 1
-            temp = temp.next
-        return length
+            while temp.next != None:
+                length += 1
+                temp = temp.next
+            return length
 
             
     def print(self):
@@ -63,6 +99,10 @@ class SingleLinkedList(object):
             temp = self.head
             while(temp != None):
                 print(temp.data, end=" ")
+                if(temp.next != None):
+                    print("->", end=" ")
+                else:
+                    print("-> NONE", end="\n")
                 temp = temp.next
     
 if __name__ == "__main__":
@@ -71,16 +111,11 @@ if __name__ == "__main__":
     list.insertHead(1)
     list.insertHead(2)
     list.insertHead(3)
-
-    print(list.contains(3))
-
-    list.print()
-
-    list.deleteHead()
+    list.insertHead(4)
 
     list.print()
 
-    list.deleteHead()
-
+    list.deleteIndex(2)
     list.print()
+    
             
