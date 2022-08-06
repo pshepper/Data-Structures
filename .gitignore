@@ -1,2 +1,3 @@
 #exclude automatically generated python files
 *.pyc
+.gitignore~
