@@ -105,7 +105,7 @@ class TestSingleLinkedList(unittest.TestCase):
         list.deleteIndex(2)
 
         # 4(H) -> 3 -> 1
-        self.assertEqual(list.index(1), 2)
+        self.assertEqual(list.index(3), 1)
         self.assertEqual(list.head.next.next.data, 1)
 
 

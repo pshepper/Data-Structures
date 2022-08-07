@@ -37,6 +37,19 @@ class DoublyLinkedList(object):
     
     def insertIndex(self, data, index):
         newNode = Node(data)
+        temp = self.head
+
+        if index == 0:
+            self.insertHead(data)
+        else: 
+            while index != 0:
+                temp = temp.next
+                index -= 1
+
+            newNode.next = temp
+            newNode.previous = temp.previous
+            newNode.previous.next = newNode
+            temp.previous = newNode
 
     def deleteHead(self):
         if self.head == None:
@@ -50,9 +63,7 @@ class DoublyLinkedList(object):
             self.head = self.head.next
             temp.next = None
 
-        
-    
-    def deleteTail(self, index):
+    def deleteTail(self):
         if self.tail == None:
             return -1
         elif self.tail == self.head:
@@ -65,6 +76,32 @@ class DoublyLinkedList(object):
 
     def deleteIndex(self, index):
         temp = self.head
+
+        if index == 0:
+            self.deleteHead()
+        elif index == self.length() - 1:
+            self.deleteTail
+        else:
+            while index != 0:
+                temp = temp.next
+                index -= 1
+            temp.next.previous = temp.previous
+            temp.previous.next = temp.next
+            temp.next = None
+            temp.previous = None
+
+    def index(self, data):
+        '''Returns first index of data that is within a list'''
+        temp = self.head
+        index = 0
+        if self.head.data == data:
+            return index
+        while temp.next != None:
+            temp = temp.next
+            index += 1
+            if temp.data == data:
+                return index
+        return None
 
     def contains(self, data):
         temp = self.head
@@ -100,16 +137,3 @@ class DoublyLinkedList(object):
 
 if __name__ == "__main__":
     list = DoublyLinkedList()
-    list.print()
-
-    list.insertHead(2)
-    list.deleteHead()
-
-    list.print()
-
-    list.insertTail(5)
-    list.insertHead(4)
-    list.insertTail(6)
-    list.deleteHead()
-
-    list.print()

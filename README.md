@@ -6,12 +6,13 @@ As a computer science student I've done a lot of learning about data structures.
 This mini-project also gives me a good opportunity to get more comfortable with git, command lines, test, and python in general.
 Long term goals include:
     1. Visualization
-    2. Methods to index data
+    2. Complex functions (sorting, reverse, etc.)
+    
 
 | Data Structure | Description | Completion Status |
 |----------------|-------------------| ------------|
-| Doubly Linked List | Linear structure where nodes are linked with the node after and before |Work in progress |
-| Single Linked List | Linear structure where nodes are linked only with the node after | Work in progress | 
+| Doubly Linked List | Linear structure where nodes are linked with the node after and before | Basic functionality finished |
+| Single Linked List | Linear structure where nodes are linked only with the node after | Basic functionality finished | 
 | Undirected Graph | Non-linear structure where nodes have any number of adjacent nodes. Edges go both ways | Not started |
 | Directed graph | Non-linear structure where nodes have any number of adjacent nodes. Edges go only one direction | Not started |
 | Tree | Non-linear structure where nodes have 'child' nodes | Not started |
