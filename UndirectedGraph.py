@@ -1,11 +1,10 @@
 # Vertex object has name and array of neighbors
 # TODO: find ways to specify error type
 
-from tabnanny import verbose
-
 
 class Vertex(object):
     def __init__(self, name):
+        # Check if name is string
         self.name = name
         self.neighbors = []
 
