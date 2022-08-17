@@ -13,8 +13,8 @@ Long term goals include:
 |----------------|-------------------| ------------|
 | Doubly Linked List | Linear structure where nodes are linked with the node after and before | Basic functionality finished |
 | Single Linked List | Linear structure where nodes are linked only with the node after | Basic functionality finished | 
-| Undirected Graph | Non-linear structure where nodes have any number of adjacent nodes. Edges go both ways | Not started |
-| Directed graph | Non-linear structure where nodes have any number of adjacent nodes. Edges go only one direction | Not started |
-| Tree | Non-linear structure where nodes have 'child' nodes | Not started |
+| Undirected Graph | Non-linear structure where nodes have any number of adjacent nodes. Edges go both ways | Basic functionality finished |
+| Directed graph | Non-linear structure where nodes have any number of adjacent nodes. Edges go only one direction | Basic functionality finished |
+| Tree | Non-linear structure where nodes have 'child' nodes | Basic functionality finished |
 | Binary tree | Non-linear structure where each node can only have two children | Not started |
 
