@@ -2,6 +2,9 @@
 # A tree is made up of verticies with a single root
 
 
+from ast import Delete
+
+
 class Vertex(object):
     def __init__(self, name):
         self.name = name
@@ -14,8 +17,12 @@ class Vertex(object):
             self.children.append(child.name)
             child.parent = self
 
+    def deleteChild(self, child):
+        if isinstance(child, Vertex) and child.name in self.children:
+            self.children.remove(child.name)
+
     def isLeaf(self):
-        if self.children != [] and self.parent != None:
+        if self.children == [] and self.parent != None:
             return True
         else: 
             return False
@@ -27,10 +34,6 @@ class Tree(object):
     def addVertex(self, v1):
         if isinstance(v1, Vertex):
             self.verticies[v1.name] = v1.children
-
-    def deleteSubtree(self, v1):
-        '''Removes subtree with v1 as root of tree'''
-        return 'foo'
 
 if __name__ == "__main__":
     root = Vertex('r')
@@ -48,3 +51,14 @@ if __name__ == "__main__":
     c1.addChild(c11)
     print(c1.children)
     print(c11.parent.name)
+
+    tree = Tree()
+    tree.addVertex(root)
+    tree.addVertex(c1)
+    tree.addVertex(c2)
+    tree.addVertex(c11)
+    print(tree.verticies)
+
+    root.deleteChild(c1)
+    print(tree.verticies)
+    print(root.children)
