@@ -2,8 +2,6 @@
 # A tree is made up of verticies with a single root
 
 
-from ast import Delete
-
 
 class Vertex(object):
     def __init__(self, name):
@@ -31,9 +29,9 @@ class Tree(object):
     def __init__(self):
         self.verticies = {} # Name <String> : Children [<Strings>]
 
-    def addVertex(self, v1):
-        if isinstance(v1, Vertex):
-            self.verticies[v1.name] = v1.children
+    def addVertex(self, v):
+        if isinstance(v, Vertex):
+            self.verticies[v.name] = v.children
 
 if __name__ == "__main__":
     root = Vertex('r')
