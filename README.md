@@ -16,5 +16,5 @@ Long term goals include:
 | Undirected Graph | Non-linear structure where nodes have any number of adjacent nodes. Edges go both ways | Basic functionality finished |
 | Directed graph | Non-linear structure where nodes have any number of adjacent nodes. Edges go only one direction | Basic functionality finished |
 | Tree | Non-linear structure where nodes have 'child' nodes | Basic functionality finished |
-| Binary tree | Non-linear structure where each node can only have two children | Not started |
+| Binary tree | Non-linear structure where each node can only have two children | Basic functionality finished |
 
