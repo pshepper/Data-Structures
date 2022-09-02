@@ -13,21 +13,21 @@ class TestSingleLinkedList(unittest.TestCase):
         # Checks list is empty
         self.assertIsNone(list.head)
     
-    def test_add_head(self):
+    def test_insert_head(self):
         list = SingleLinkedList()
-        list.add_head(3)
+        list.insert_head(3)
 
         # 3(H) -> None
         self.assertEqual(list.head.data, 3)
         self.assertIsNone(list.head.next)
 
         # 2(H) -> 3 -> None
-        list.add_head(2)
+        list.insert_head(2)
         self.assertEqual(list.head.data, 2)
         self.assertEqual(list.head.next.data, 3)
 
         # 1(H) -> 2 -> 3 -> None
-        list.add_head(1)
+        list.insert_head(1)
         self.assertEqual(list.head.data, 1)
         self.assertEqual(list.head.next.data, 2)
         self.assertEqual(list.head.next.next.data, 3)
@@ -35,9 +35,9 @@ class TestSingleLinkedList(unittest.TestCase):
 
     def test_remove_head(self):
         list = SingleLinkedList()
-        list.add_head(3)
-        list.add_head(2)
-        list.add_head(1)
+        list.insert_head(3)
+        list.insert_head(2)
+        list.insert_head(1)
 
         list.remove_head()
 
@@ -48,10 +48,10 @@ class TestSingleLinkedList(unittest.TestCase):
 
     def test_length(self):
         list = SingleLinkedList()
-        list.add_head(1)
-        list.add_head(2)
-        list.add_head(3)
-        list.add_head(4)
+        list.insert_head(1)
+        list.insert_head(2)
+        list.insert_head(3)
+        list.insert_head(4)
 
         # 4(H) -> 3 -> 2 -> 1
         self.assertEqual(list.length(), 4)
@@ -70,10 +70,10 @@ class TestSingleLinkedList(unittest.TestCase):
 
     def test_index(self):
         list = SingleLinkedList()
-        list.add_head(1)
-        list.add_head(2)
-        list.add_head(3)
-        list.add_head(4)
+        list.insert_head(1)
+        list.insert_head(2)
+        list.insert_head(3)
+        list.insert_head(4)
 
         # 4(H) -> 3 -> 2 -> 1
         self.assertEqual(list.index(4), 0)
@@ -82,9 +82,9 @@ class TestSingleLinkedList(unittest.TestCase):
     
     def test_insert_index(self):
         list = SingleLinkedList()
-        list.add_head(1)
-        list.add_head(3)
-        list.add_head(4)
+        list.insert_head(1)
+        list.insert_head(3)
+        list.insert_head(4)
         # 4(H) -> 3 -> 1
 
         list.insert_index(2,2)
@@ -96,10 +96,10 @@ class TestSingleLinkedList(unittest.TestCase):
 
     def test_remove_index(self):
         list = SingleLinkedList()
-        list.add_head(1)
-        list.add_head(2)
-        list.add_head(3)
-        list.add_head(4)
+        list.insert_head(1)
+        list.insert_head(2)
+        list.insert_head(3)
+        list.insert_head(4)
         # 4(H) -> 3 -> 2 -> 1
 
         list.remove_index(2)
