@@ -6,11 +6,11 @@ class Vertex(object):
         self.right = None 
         # parent
 
-    def addLeft(self, vertex):
+    def add_left(self, vertex):
         if isinstance(vertex, Vertex) and self.left == None:
             self.left = vertex
 
-    def addRight(self, vertex):
+    def add_right(self, vertex):
         if isinstance(vertex, Vertex) and self.right == None:
             self.right = vertex
 
@@ -19,35 +19,56 @@ class Tree(object):
         self.root = None
 
     # Takes value and root of tree/subtree
-    def addVertex(self, value, root=None):
-        if root == None:
-            root = self.root
-    
+    def add_vertex(self, value, root=None):
+        
         if self.root == None:
             self.root = Vertex(value)
-        else:
-            if value <= root.value:
-                if root.left == None:
-                    root.left == Vertex(value)
-                    # parent
-                else:
-                    return self.addVertex(value, root= root.left)
-            if value < root.key:
-                if root.right == None:
-                    root.right == Vertex(value)
-                    # parent
-                else:
-                    return self.addVertex(value, root= root.right)
+            return
+        if root == None:
+            root = self.root
+        # else:
+        if value <= root.value:
+            if root.left == None:
+                root.left = Vertex(value) 
+                # parent
+            else:
+                return self.add_vertex(value, root= root.left)
+        if value > root.value:
+            if root.right == None:
+                root.right = Vertex(value)
+                # parent
+            else:
+                return self.add_vertex(value, root= root.right)
 
     def search(self, value, root=None):
-        x = 1
+        if root == None:
+            root = self.root
+        if self.root.value == value:
+            return self.root
+        else:
+            if root.value == value:
+                return root
+            elif value < root.value:
+                return self.search(value, root=root.left)
+            elif value > root.value:
+                return self.search(value, root=root.right)
 
-    def deleteVertex(self, value, node=None):
+    def remove_vertex(self, value, node=None):
         x = 1
         
+if __name__ == "__main__":
+    tree = Tree()
 
-        
+    tree.add_vertex(10)
+    tree.add_vertex(5)
+    tree.add_vertex(15)
 
+    root = tree.root
+    print(root.value)
+    print(root.left.value)
+    print(root.right.value)
+
+    print(tree.search(5))
 
 
 
