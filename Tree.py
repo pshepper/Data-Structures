@@ -9,17 +9,17 @@ class Vertex(object):
         self.parent = None
         self.children = []
 
-    def addChild(self, child):
+    def add_child(self, child):
         '''Add child to node, cannot be self'''
         if isinstance(child, Vertex) and child != self and child.parent == None:
             self.children.append(child.name)
             child.parent = self
 
-    def deleteChild(self, child):
+    def remove_child(self, child):
         if isinstance(child, Vertex) and child.name in self.children:
             self.children.remove(child.name)
 
-    def isLeaf(self):
+    def is_leaf(self):
         if self.children == [] and self.parent != None:
             return True
         else: 
@@ -29,7 +29,7 @@ class Tree(object):
     def __init__(self):
         self.verticies = {} # Name <String> : Children [<Strings>]
 
-    def addVertex(self, v):
+    def add_vertex(self, v):
         if isinstance(v, Vertex):
             self.verticies[v.name] = v.children
 
@@ -39,24 +39,24 @@ if __name__ == "__main__":
     c2 = Vertex('child2')
     c11 = Vertex('child11')
 
-    root.addChild(c1)
+    root.add_child(c1)
     print(root.children)
     print(c1.parent.name)
 
-    root.addChild(c2)
+    root.add_child(c2)
     print(root.children)
 
-    c1.addChild(c11)
+    c1.add_child(c11)
     print(c1.children)
     print(c11.parent.name)
 
     tree = Tree()
-    tree.addVertex(root)
-    tree.addVertex(c1)
-    tree.addVertex(c2)
-    tree.addVertex(c11)
+    tree.add_vertex(root)
+    tree.add_vertex(c1)
+    tree.add_vertex(c2)
+    tree.add_vertex(c11)
     print(tree.verticies)
 
-    root.deleteChild(c1)
+    root.remove_child(c1)
     print(tree.verticies)
     print(root.children)

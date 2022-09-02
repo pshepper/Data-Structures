@@ -7,10 +7,10 @@ class SingleLinkedList(object):
     def __init__(self):
         self.head = None
 
-    def destroyList(self):
+    def reset_list(self):
         self.head = None
 
-    def insertHead(self,data):
+    def insert_head(self,data):
         newNode = Node(data)
         if self.head == None:
             self.head = newNode
@@ -18,13 +18,13 @@ class SingleLinkedList(object):
             newNode.next = self.head
             self.head = newNode
 
-    def insertIndex(self, data, index):
+    def insert_index(self, data, index):
         newNode = Node(data)
         temp = self.head
         previousNode = None
 
         if index == 0:
-            self.insertHead(data)
+            self.insert_head(data)
         else: 
             while index != 0:
                 previousNode = temp
@@ -33,23 +33,23 @@ class SingleLinkedList(object):
             previousNode.next = newNode
             newNode.next = temp
     
-    def deleteHead(self):
+    def remove_head(self):
         if self.head == None:
             return -1
         elif self.length == 1:
-            self.destroyList()
+            self.reset_list()
         else:
             temp = self.head
 
             self.head = self.head.next
             temp.next = None
 
-    def deleteIndex(self, index):
+    def remove_index(self, index):
         temp = self.head
         previousNode = None
 
         if index == 0:
-            self.deleteHead()
+            self.remove_head()
         else:
             while index != 0:
                 previousNode = temp
@@ -108,14 +108,14 @@ class SingleLinkedList(object):
 if __name__ == "__main__":
     list = SingleLinkedList()
 
-    list.insertHead(1)
-    list.insertHead(2)
-    list.insertHead(3)
-    list.insertHead(4)
+    list.insert_head(1)
+    list.insert_head(2)
+    list.insert_head(3)
+    list.insert_head(4)
 
     list.print()
 
-    list.deleteIndex(2)
+    list.remove_index(2)
     list.print()
     
             

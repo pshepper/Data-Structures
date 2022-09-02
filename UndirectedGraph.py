@@ -8,7 +8,7 @@ class Vertex(object):
         self.name = name
         self.neighbors = []
 
-    def addNeighbor(self, neighbor):
+    def add_neighbor(self, neighbor):
         if isinstance(neighbor, Vertex):
             if neighbor not in self.neighbors:
                 self.neighbors.append(neighbor.name)
@@ -18,7 +18,7 @@ class Vertex(object):
         else: 
             return -1
 
-    def deleteNeighbor(self, neighbor):
+    def remove_neighbor(self, neighbor):
         if isinstance(neighbor, Vertex):
             if neighbor.name in self.neighbors:
                 self.neighbors.remove(neighbor.name)
@@ -29,29 +29,29 @@ class Graph(object):
     def __init__(self):
         self.verticies = {} # Name : Neighbors 
 
-    def addVertex(self, v1):
+    def add_vertex(self, v1):
         self.verticies[v1.name] = v1.neighbors
 
-    def addEdge(self, v1, v2):
+    def add_edge(self, v1, v2):
         # Check if verticies on graph
         if v1.name and v2.name in self.verticies:
             if isinstance(v1, Vertex) and isinstance(v2, Vertex):
-                v1.addNeighbor(v2)
+                v1.add_neighbor(v2)
 
-    def deleteVertex(self, v1):
+    def remove_vertex(self, v1):
         '''Unattaches all edges of vertex v1 and removes it from graph'''
         if v1.name in self.verticies:
             if isinstance(v1, Vertex):
                 for n in v1.neighbors:
-                    v1.deleteNeighbor(n)
+                    v1.remove_neighbor(n)
                 self.verticies.pop(v1.name)
 
-    def deleteEdge(self, v1, v2):
+    def remove_edge(self, v1, v2):
         if v1.name and v2.name in self.verticies:
             if isinstance(v1, Vertex) and isinstance(v2, Vertex):
-                v1.deleteNeighbor(v2)
+                v1.remove_neighbor(v2)
 
-    def printAdjencyList(self):
+    def adjaceny_list(self):
             # Will want to sort graph before
             list = ["{} : {}".format(vertex, self.verticies[vertex]) for vertex in self.verticies]
             for vertex in list:
@@ -66,21 +66,21 @@ if __name__ == "__main__":
     graph = Graph()
     
 
-    graph.addVertex(a)
-    graph.addVertex(b)
-    graph.addVertex(c)
-    graph.addEdge(a, b)
-    graph.addEdge(b, c)
+    graph.add_vertex(a)
+    graph.add_vertex(b)
+    graph.add_vertex(c)
+    graph.add_edge(a, b)
+    graph.add_edge(b, c)
 
     d = Vertex('d')
-    graph.addVertex(d)
-    graph.addEdge(a, d)
+    graph.add_vertex(d)
+    graph.add_edge(a, d)
 
     
-    a.deleteNeighbor(b)
-    a.addNeighbor(b)
+    a.remove_neighbor(b)
+    a.add_neighbor(b)
 
     #print(graph.verticies)
-    print(graph.printAdjencyList())
+    print(graph.adjaceny_list())
 
     x =1

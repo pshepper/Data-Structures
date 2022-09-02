@@ -9,11 +9,11 @@ class DoublyLinkedList(object):
         self.head = None
         self.tail = None
 
-    def destroyList(self):
+    def reset_list(self):
         self.head = None
         self.tail = None
 
-    def insertHead(self, data):
+    def insert_head(self, data):
         newNode = Node(data)
 
         if self.head == None and self.tail == None:
@@ -24,7 +24,7 @@ class DoublyLinkedList(object):
             newNode.next = self.head
             self.head = newNode
 
-    def insertTail(self, data):
+    def insert_tail(self, data):
         newNode = Node(data)
 
         if self.head == None and self.tail == None:
@@ -35,12 +35,12 @@ class DoublyLinkedList(object):
             newNode.previous = self.tail
             self.tail = newNode
     
-    def insertIndex(self, data, index):
+    def insert_index(self, data, index):
         newNode = Node(data)
         temp = self.head
 
         if index == 0:
-            self.insertHead(data)
+            self.insert_head(data)
         else: 
             while index != 0:
                 temp = temp.next
@@ -51,11 +51,11 @@ class DoublyLinkedList(object):
             newNode.previous.next = newNode
             temp.previous = newNode
 
-    def deleteHead(self):
+    def remove_head(self):
         if self.head == None:
             return -1
         elif self.head == self.tail:
-            self.destroyList()
+            self.reset_list()
         else:
             temp = self.head
 
@@ -63,24 +63,24 @@ class DoublyLinkedList(object):
             self.head = self.head.next
             temp.next = None
 
-    def deleteTail(self):
+    def remove_tail(self):
         if self.tail == None:
             return -1
         elif self.tail == self.head:
-            self.destroyList()
+            self.reset_list()
         else:
             temp = self.tail.previous
             temp.next = None
             self.tail.previous = None
             self.tail = temp
 
-    def deleteIndex(self, index):
+    def remove_index(self, index):
         temp = self.head
 
         if index == 0:
-            self.deleteHead()
+            self.remove_head()
         elif index == self.length() - 1:
-            self.deleteTail
+            self.remove_tail
         else:
             while index != 0:
                 temp = temp.next

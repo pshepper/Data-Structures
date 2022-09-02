@@ -8,7 +8,7 @@ class Vertex(object):
         self.name = name
         self.neighbors = [] # [<Strings>]
 
-    def addNeighbor(self,neighbor):
+    def add_neighbor(self,neighbor):
         '''neighbors are only verticies that can be reached'''
         if isinstance(neighbor, Vertex):
             if neighbor not in self.neighbors:
@@ -26,6 +26,6 @@ class Graph(object):
     def __init__(self):
         self.verticies = {} # Name<String> : Neighbors [<Strings>]
 
-    def addVertex(self, v1):
+    def add_vertex(self, v1):
         if isinstance(v1, Vertex):
             self.verticies[v1.name] = v1.neighbors

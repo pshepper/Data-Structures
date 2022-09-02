@@ -13,37 +13,37 @@ class TestDoublyLinkedList(unittest.TestCase):
         # Checks list exist with empty head and tail pointer
         self.assertIsNone(dList.head, dList.tail)
 
-    def test_insertHead(self):
+    def test_insert_head(self):
         dList = DoublyLinkedList()
         
-        dList.insertHead(3)
+        dList.insert_head(3)
 
         # 3(H) <-> None
         self.assertEqual(dList.head.data, 3)
         self.assertIsNone(dList.head.next)
 
         # 2(H) <-> 3 <-> None
-        dList.insertHead(2)
+        dList.insert_head(2)
         self.assertEqual(dList.head.data, 2)
         self.assertEqual(dList.head.next.data, 3)
 
         # 1(H) <-> 2 <-> 3 <-> None
-        dList.insertHead(1)
+        dList.insert_head(1)
         self.assertEqual(dList.head.data, 1)
         self.assertEqual(dList.head.next.data, 2)
         self.assertEqual(dList.head.next.next.data, 3)
         self.assertIsNone(dList.head.next.next.next)
 
-    def test_insertTail(self):
+    def test_insert_tail(self):
         dList = DoublyLinkedList()
 
-        dList.insertTail(1)
+        dList.insert_tail(1)
 
         # 1 (H&T) -> None
         self.assertEqual(dList.tail, dList.head)
         self.assertEqual(dList.tail.data, 1)
 
-        dList.insertTail(2)
+        dList.insert_tail(2)
 
         # 1(H) <-> 2(T) -> None
         self.assertNotEqual(dList.tail, dList.head)
@@ -51,7 +51,7 @@ class TestDoublyLinkedList(unittest.TestCase):
         self.assertEqual(dList.tail.data, 2)
         self.assertEqual(dList.tail.previous.data, 1)
 
-        dList.insertHead(0)
+        dList.insert_head(0)
 
         # 0(H) <-> 1 <-> 2(T) -> None
         self.assertEqual(dList.head.data, 0)
@@ -59,16 +59,16 @@ class TestDoublyLinkedList(unittest.TestCase):
         self.assertEqual(dList.head.next.previous.data, 0)
         self.assertEqual(dList.tail.previous.data, 1)
 
-    def test_deleteHead(self):
+    def test_remove_head(self):
         dList = DoublyLinkedList()
 
-        dList.insertHead(3)
-        dList.insertHead(2)
-        dList.insertHead(1)
-        dList.insertHead(0)
+        dList.insert_head(3)
+        dList.insert_head(2)
+        dList.insert_head(1)
+        dList.insert_head(0)
         # 0(H) <-> 1 <-> 2 <-> 3 -> None
 
-        dList.deleteHead()
+        dList.remove_head()
 
         # 1(H) <-> 2 <-> 3 -> None
         self.assertEqual(dList.head.data, 1)
@@ -76,26 +76,26 @@ class TestDoublyLinkedList(unittest.TestCase):
         self.assertEqual(dList.head.next.data, 2)
         self.assertEqual(dList.head.next.previous.data, 1)
 
-        dList.deleteHead()
-        dList.deleteHead()
+        dList.remove_head()
+        dList.remove_head()
 
         # 3(H&T) -> None
         self.assertEqual(dList.head.data, 3)
         self.assertIsNone(dList.head.next)
 
-        dList.deleteHead()
+        dList.remove_head()
 
         # Empty list
         self.assertIsNone(dList.head, dList.tail)
 
-    def test_deleteTail(self):
+    def test_remove_tail(self):
         dList = DoublyLinkedList()
 
-        dList.insertHead(3)
-        dList.insertHead(2)
-        dList.insertHead(1)
+        dList.insert_head(3)
+        dList.insert_head(2)
+        dList.insert_head(1)
 
-        dList.deleteTail()
+        dList.remove_tail()
 
         # 1(H) <-> 2(T) <-> None
         self.assertEqual(dList.head.data, 1)
@@ -110,18 +110,18 @@ class TestDoublyLinkedList(unittest.TestCase):
         self.assertIsNone(dList.head, dList.tail)
         self.assertEqual(dList.length(), 0)
 
-        dList.insertHead(1)
-        dList.insertTail(2)
+        dList.insert_head(1)
+        dList.insert_tail(2)
 
         # 1(H) <-> 2(T)
         self.assertEqual(dList.length(), 2)
 
-        dList.insertHead(0)
+        dList.insert_head(0)
 
         # 0(H) <-> 1 <-> 2(T)
         self.assertEqual(dList.length(), 3)
 
-        dList.deleteHead()
+        dList.remove_head()
 
         # 1(H) <-> 2(T)
         self.assertEqual(dList.length(), 2)
@@ -129,25 +129,25 @@ class TestDoublyLinkedList(unittest.TestCase):
     def test_index(self):
         dList = DoublyLinkedList()
 
-        dList.insertHead(1)
-        dList.insertHead(2)
-        dList.insertHead(3)
-        dList.insertHead(4)
+        dList.insert_head(1)
+        dList.insert_head(2)
+        dList.insert_head(3)
+        dList.insert_head(4)
 
         # 4(H) -> 3 -> 2 -> 1
         self.assertEqual(dList.index(4), 0)
         self.assertEqual(dList.index(3), 1)
         self.assertEqual(dList.index(1), 3)
 
-    def test_insertIndex(self):
+    def test_insert_index(self):
         dList = DoublyLinkedList()
 
-        dList.insertHead(1)
-        dList.insertHead(3)
-        dList.insertHead(4)
+        dList.insert_head(1)
+        dList.insert_head(3)
+        dList.insert_head(4)
         # 4(H) <-> 3 <-> 1(T) <-> None
 
-        dList.insertIndex(2,2)
+        dList.insert_index(2,2)
 
         # 4(H) <-> 3 <-> 2 <-> 1(T) <-> None
         self.assertEqual(dList.index(2), 2)
@@ -155,16 +155,16 @@ class TestDoublyLinkedList(unittest.TestCase):
         self.assertEqual(dList.tail.previous.next.data, 1)
         self.assertEqual(dList.tail.previous.data, 2)
 
-    def test_deleteIndex(self):
+    def test_remove_index(self):
         dList = DoublyLinkedList()
 
-        dList.insertHead(1)
-        dList.insertHead(2)
-        dList.insertHead(3)
-        dList.insertHead(4)
+        dList.insert_head(1)
+        dList.insert_head(2)
+        dList.insert_head(3)
+        dList.insert_head(4)
         # 4(H) <-> 3 <-> 2 <-> 1
 
-        dList.deleteIndex(2)
+        dList.remove_index(2)
 
         # 4(H) <-> 3 <-> 1
         self.assertEqual(dList.index(3), 1)
